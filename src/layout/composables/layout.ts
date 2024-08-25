@@ -1,14 +1,6 @@
 import { computed, reactive, readonly } from 'vue';
 
-interface LayoutConfig {
-    preset: string;
-    primary: string;
-    surface: null;
-    darkTheme: boolean;
-    menuMode: string;
-}
-
-const layoutConfig: LayoutConfig = reactive({
+const layoutConfig = reactive({
     preset: 'Aura',
     primary: 'emerald',
     surface: null,
