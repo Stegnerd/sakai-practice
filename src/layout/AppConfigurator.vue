@@ -420,7 +420,7 @@ const surfaces = ref([
 ]);
 
 function getPresetExt() {
-    const color = primaryColors.value.find((conf) => conf.name === layoutConfig.primary);
+    const color = primaryColors.value.find((c) => c.name === layoutConfig.primary);
 
     if (color.name === 'noir') {
         return {
@@ -511,9 +511,9 @@ function getPresetExt() {
 
 function updateColors(type, color) {
     if (type === 'primary') {
-        setPrimary(color);
-    } else {
-        setSurface(color);
+        setPrimary(color.name);
+    } else if (type === 'surface') {
+        setSurface(color.name);
     }
 
     applyTheme(type, color);
@@ -553,6 +553,7 @@ function onMenuModeChange() {
                         :key="primaryColor.name"
                         :class="['border-none w-5 h-5 rounded-full p-0 cursor-pointer outline-none outline-offset-1', { 'outline-primary': layoutConfig.primary === primaryColor.name }]"
                         :style="{ backgroundColor: `${primaryColor.name === 'noir' ? 'var(--text-color)' : primaryColor.palette['500']}` }"
+                        :title="primaryColor.name"
                         type="button"
                         @click="updateColors('primary', primaryColor)"
                     ></button>
